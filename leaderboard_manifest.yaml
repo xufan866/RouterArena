@@ -1,0 +1,105 @@
+# SPDX-FileCopyrightText: Copyright contributors to the RouterArena project
+# SPDX-License-Identifier: Apache-2.0
+#
+# Single source of truth mapping each leaderboard router to the website's data.
+#
+# `scripts/website/build_site_data.py` reads this together with the README
+# (authoritative headline metrics) and the evaluated prediction files to
+# regenerate the website's src/data, MERGING into the existing website data:
+#   * every router here updates/inserts its row in routerMetrics/leaderboard.json
+#     (matched by `website_name`);
+#   * routers with a `prediction` file additionally have their per-difficulty
+#     category_scores (key `category_key`) and per-query flip_labels
+#     (file flip_labels_<flip_key>.json) regenerated;
+#   * anything already on the website that is NOT listed here (externally
+#     pre-computed baselines) is left untouched.
+#
+# `readme_name` matches the README leaderboard row (dash/case-insensitive).
+# `website_name` is the exact "Router Name" string the website's leaderboard.json
+# uses. `category_key` / `flip_key` are the website's existing (inconsistent) keys.
+# Omit `prediction` for baselines that have no prediction file in RouterArena.
+
+routers:
+  # --- Routers submitted to RouterArena (derived data regenerated) ---
+  - readme_name: "Sqwish Router"
+    website_name: "Sqwish Router"
+    prediction: "sqwish-router"
+    category_key: "sqwish-router"
+    flip_key: "sqwish-router"
+
+  - readme_name: "AgentForge Router"
+    website_name: "AgentForge Router"
+    prediction: "agentforge-router"
+    category_key: "agentforge"
+    flip_key: "agentforge"
+
+  - readme_name: "Nadir Router"
+    website_name: "Nadir Router"
+    prediction: "nadir-cascade-v2"
+    category_key: "nadir"
+    flip_key: "nadir"
+
+  - readme_name: "Weave Router"
+    website_name: "Weave Router"
+    prediction: "weave-router"
+    category_key: "weave"
+    flip_key: "weave-router"
+
+  - readme_name: "OrcaRouter-Adaptive"
+    website_name: "OrcaRouter-Adaptive"
+    prediction: "orcarouter-adaptive"
+    category_key: "orcarouter"
+    flip_key: "orcarouter"
+
+  - readme_name: "Azure-Model-Router"
+    website_name: "azure"
+    prediction: "azure-model-router"
+    category_key: "azure"
+    flip_key: "azure"
+
+  - readme_name: "R2-Router"
+    website_name: "R2-Router"
+    prediction: "r2-router"
+    category_key: "r2-router"
+    flip_key: "r2-router"
+
+  - readme_name: "Auto Router"
+    website_name: "Auto Router"
+    prediction: "auto_router"
+    category_key: "auto_router"
+    flip_key: "auto_router"
+
+  - readme_name: "vLLM-SR"
+    website_name: "vllm"
+    prediction: "vllm-sr"
+    category_key: "vllm"
+    flip_key: "vllm-sr"
+
+  - readme_name: "Chayan"
+    website_name: "chayan"
+    prediction: "chayan"
+    category_key: "chayan"
+    # no robustness file -> no flip_key
+
+  # --- Externally-evaluated baselines (headline from README; derived data on
+  #     the website is preserved as-is) ---
+  - readme_name: "MIRT-BERT"
+    website_name: "mirt_bert"
+  - readme_name: "NIRT-BERT"
+    website_name: "nirt_bert"
+  - readme_name: "GPT-5"
+    website_name: "gpt5"
+  - readme_name: "CARROT"
+    website_name: "carrot"
+  - readme_name: "RouterBench-MLP"
+    website_name: "routerbench_mlp"
+  - readme_name: "NotDiamond"
+    website_name: "notdiamond"
+  - readme_name: "GraphRouter"
+    website_name: "graphrouter"
+  - readme_name: "RouterBench-KNN"
+    website_name: "routerbench_knn"
+  - readme_name: "RouteLLM"
+    website_name: "routellm"
+  - readme_name: "RouterDC"
+    website_name: "RouterDC"
