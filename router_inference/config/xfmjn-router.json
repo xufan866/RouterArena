@@ -1,0 +1,14 @@
+{
+  "pipeline_params": {
+    "router_name": "xfmjn-router",
+    "router_cls_name": "XfMjnRouter",
+    "models": [
+	  "MiniMax-M3",
+      "agnes-2.0-flash",
+      "deepseek-ai/DeepSeek-R1-0528-Qwen3-8B",
+	  "THUDM/GLM-4-9B-0414"
+
+    ]
+
+  }
+}
